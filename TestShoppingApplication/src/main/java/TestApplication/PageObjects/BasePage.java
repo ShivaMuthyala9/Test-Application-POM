@@ -57,8 +57,8 @@ public abstract class BasePage {
         el.sendKeys(text);
     }
 
-    protected String getText(WebElement element) {
-        return waitForVisible(element).getText();
+    protected String getText(By locator) {
+        return waitForVisible(locator).getText();
     }
 
     protected String getAttribute(By locator, String attribute) {

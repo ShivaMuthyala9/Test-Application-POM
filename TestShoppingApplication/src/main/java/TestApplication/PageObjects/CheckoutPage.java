@@ -6,11 +6,8 @@ import org.openqa.selenium.WebDriver;
 import TestApplication.AbstractComponents.ConfigProperties;
 
 public class CheckoutPage extends BasePage {
-    WebDriver driver;
-
     public CheckoutPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     public void fillCardDetails() {
