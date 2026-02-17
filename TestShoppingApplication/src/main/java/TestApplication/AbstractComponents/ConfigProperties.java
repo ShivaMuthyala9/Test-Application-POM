@@ -8,7 +8,7 @@ public class ConfigProperties {
 
     // Card Details
     public static final String CVV_CODE = "845645";
-    public static final String NAMEONCARD = "Shiva Muthyala";
+    public static final String NAME_ON_CARD = "Shiva Muthyala";
 
     // shipping information
     public static final String COUNTRY = "India";
