@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-02-18T19:34:14 IST" name="Surefire suite" finished-at="2026-02-18T19:35:45 IST" duration-ms="91414">
+    <groups>
+    </groups>
+    <test started-at="2026-02-18T19:34:14 IST" name="Surefire test" finished-at="2026-02-18T19:35:45 IST" duration-ms="91414">
+      <class name="TestApplication.ShoppingApplicationTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:14 IST" name="setUp" finished-at="2026-02-18T19:34:24 IST" duration-ms="10163" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testUserLogin()[pri:1, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:24 IST" name="testUserLogin" description="Verify user can login with valid credentials" finished-at="2026-02-18T19:34:26 IST" duration-ms="1566" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUserLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:26 IST" name="tearDown" finished-at="2026-02-18T19:34:27 IST" duration-ms="965" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:27 IST" name="setUp" finished-at="2026-02-18T19:34:35 IST" duration-ms="7960" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testAddProductToCart()[pri:2, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:35 IST" name="testAddProductToCart" description="Verify user can add product to cart by product name" finished-at="2026-02-18T19:34:39 IST" duration-ms="4306" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddProductToCart -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:39 IST" name="tearDown" finished-at="2026-02-18T19:34:40 IST" duration-ms="803" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:40 IST" name="setUp" finished-at="2026-02-18T19:34:47 IST" duration-ms="7424" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testFilterByPrice()[pri:3, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:47 IST" name="testFilterByPrice" description="Verify user can filter products by price" finished-at="2026-02-18T19:34:51 IST" duration-ms="3620" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testFilterByPrice -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:51 IST" name="tearDown" finished-at="2026-02-18T19:34:52 IST" duration-ms="973" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:52 IST" name="setUp" finished-at="2026-02-18T19:34:58 IST" duration-ms="6748" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testCompleteCheckoutFlow()[pri:4, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:34:58 IST" name="testCompleteCheckoutFlow" description="Verify user can complete checkout and place order" finished-at="2026-02-18T19:35:07 IST" duration-ms="8281" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompleteCheckoutFlow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:35:07 IST" name="tearDown" finished-at="2026-02-18T19:35:08 IST" duration-ms="1080" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:35:08 IST" name="setUp" finished-at="2026-02-18T19:35:15 IST" duration-ms="7026" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testViewOrderHistory()[pri:5, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:35:15 IST" name="testViewOrderHistory" description="Verify user can view order history" finished-at="2026-02-18T19:35:24 IST" duration-ms="9286" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testViewOrderHistory -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:35:24 IST" name="tearDown" finished-at="2026-02-18T19:35:25 IST" duration-ms="988" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:35:25 IST" name="setUp" finished-at="2026-02-18T19:35:33 IST" duration-ms="7983" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testOrderHistoryNotEmpty()[pri:6, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:35:33 IST" name="testOrderHistoryNotEmpty" description="Verify orders are displayed in order history" finished-at="2026-02-18T19:35:44 IST" duration-ms="10506" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testOrderHistoryNotEmpty -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestApplication.ShoppingApplicationTest@5dd6264]" started-at="2026-02-18T19:35:44 IST" name="tearDown" finished-at="2026-02-18T19:35:45 IST" duration-ms="1604" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TestApplication.ShoppingApplicationTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

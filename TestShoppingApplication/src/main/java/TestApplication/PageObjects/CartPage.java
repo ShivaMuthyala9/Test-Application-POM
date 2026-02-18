@@ -3,10 +3,10 @@ package TestApplication.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CartPge extends BasePage {
+public class CartPage extends BasePage {
     WebDriver Driver;
 
-    public CartPge(WebDriver driver) {
+    public CartPage(WebDriver driver) {
         super(driver);
         this.Driver = driver;
     }
@@ -20,4 +20,5 @@ public class CartPge extends BasePage {
         click(By.xpath("//button[text()='Continue Shopping']"));
         return new HomePage(Driver);
     }
+
 }

@@ -9,9 +9,10 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void addTOCartByVisibleText(String productName) {
+    public void addToCartByProductName(String productName) {
         click(By.xpath(
                 "//div[@class='card-body']/h5[normalize-space()='" + productName + "']/following-sibling::button[2]"));
+        waitForSpinnerToDisappear();
     }
 
     public void viewProductByVisibleText(String productName) {
@@ -20,7 +21,17 @@ public class HomePage extends BasePage {
     }
 
     public void setPriceFilter(int minPrice, int maxPrice) {
-        type(By.name("minPrice"), String.valueOf(minPrice));
-        type(By.name("maxPrice"), String.valueOf(maxPrice) + Keys.ENTER);
+        type(By.xpath("(//input[@name=\"minPrice\"])[2]"), String.valueOf(minPrice));
+        type(By.xpath("(//input[@name=\"maxPrice\"])[2]"), String.valueOf(maxPrice) + Keys.ENTER);
+    }
+
+    public String[] getPriceFilterValues() {
+        String minPrice = getAttribute(
+                By.xpath("(//input[@name=\"minPrice\"])[2]"), "value");
+
+        String maxPrice = getAttribute(
+                By.xpath("(//input[@name=\"maxPrice\"])[2]"), "value");
+
+        return new String[] { minPrice, maxPrice };
     }
 }

@@ -8,8 +8,8 @@ public class OrderSuccessPage extends BasePage {
         super(driver);
     }
 
-    public viewOrdersHistoryPage viewOrdersHistory() {
+    public ViewOrdersHistoryPage viewOrdersHistory() {
         click(By.xpath("//label[normalize-space()='Orders History Page']"));
-        return new viewOrdersHistoryPage(driver);
+        return new ViewOrdersHistoryPage(driver);
     }
 }

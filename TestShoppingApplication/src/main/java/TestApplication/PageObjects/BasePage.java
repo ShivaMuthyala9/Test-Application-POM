@@ -30,52 +30,84 @@ public abstract class BasePage {
     }
 
     // Wait helpers
-    protected WebElement waitForPresence(By locator) {
+    public WebElement waitForPresence(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    protected WebElement waitForVisible(By locator) {
+    public WebElement waitForVisible(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    protected WebElement waitForClickable(By locator) {
+    public WebElement waitForClickable(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    protected boolean waitForInvisibility(By locator) {
+    public boolean waitForInvisibility(By locator) {
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
+    public void waitForSpinnerToDisappear() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                By.cssSelector(".ngx-spinner-overlay")));
+    }
+
+    public void waitForAngularOverlays() {
+        waitForInvisibility(By.cssSelector(".ta-backdrop"));
+        waitForSpinnerToDisappear();
+    }
+
     // Basic actions
-    protected void click(By locator) {
+    public void click(By locator) {
+        waitForAngularOverlays();
         waitForClickable(locator).click();
     }
 
-    protected void type(By locator, String text) {
+    public void type(By locator, String text) {
         WebElement el = waitForVisible(locator);
         el.clear();
         el.sendKeys(text);
     }
 
-    protected String getText(By locator) {
+    public String getText(By locator) {
         return waitForVisible(locator).getText();
     }
 
-    protected String getAttribute(By locator, String attribute) {
+    public String getAttribute(By locator, String attribute) {
         return waitForPresence(locator).getAttribute(attribute);
     }
 
-    protected void hover(By locator) {
+    public void hover(By locator) {
         WebElement el = waitForVisible(locator);
         actions.moveToElement(el).perform();
     }
 
-    protected List<WebElement> findElements(By locator) {
+    public List<WebElement> findElements(By locator) {
         return driver.findElements(locator);
     }
 
     // Allow adjusting the explicit wait timeout
-    protected void setWaitTimeout(long seconds) {
+    public void setWaitTimeout(long seconds) {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
     }
+
+    // Navigation methods
+    public CartPage CartMenu() {
+        click(By.xpath("//button[@routerlink=\"/dashboard/cart\"]"));
+        return new CartPage(driver);
+    }
+
+    public ViewOrdersHistoryPage OrdersHistoryMenu() {
+        click(By.xpath("//button[@routerlink=\"/dashboard/myorders\"]"));
+        return new ViewOrdersHistoryPage(driver);
+    }
+
+    public HomePage HomeMenu() {
+        click(By.xpath("//button[@routerlink=\"/dashboard/home\"]"));
+        return new HomePage(driver);
+    }
+
+    public void signOutMenu() {
+        click(By.xpath("(//button[@class=\"btn btn-custom\"])[4]"));
+    }
+
 }

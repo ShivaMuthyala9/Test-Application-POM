@@ -10,7 +10,7 @@ public class LandingPage extends BasePage {
         super(driver);
     }
 
-    public HomePage loginToapplication() {
+    public HomePage loginToApplication() {
         type(By.id("userEmail"), ConfigProperties.MAIL_ID);
         type(By.id("userPassword"), ConfigProperties.PASSWORD);
         click(By.id("login"));

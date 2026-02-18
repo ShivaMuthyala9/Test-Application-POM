@@ -7,8 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class viewOrdersHistoryPage extends BasePage {
-    public viewOrdersHistoryPage(WebDriver driver) {
+public class ViewOrdersHistoryPage extends BasePage {
+    public ViewOrdersHistoryPage(WebDriver driver) {
         super(driver);
     }
 
