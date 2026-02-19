@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 import TestApplication.AbstractComponents.ConfigProperties;
 
-public class LandingPage extends BasePage {
-    public LandingPage(WebDriver driver) {
+public class LoginPage extends BasePage {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 

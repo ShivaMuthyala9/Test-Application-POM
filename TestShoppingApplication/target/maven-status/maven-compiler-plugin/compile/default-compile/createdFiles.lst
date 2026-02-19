@@ -1,9 +1,0 @@
-TestApplication\PageObjects\LandingPage.class
-TestApplication\PageObjects\HomePage.class
-TestApplication\AbstractComponents\ConfigProperties.class
-TestApplication\PageObjects\CartPage.class
-TestApplication\PageObjects\OrderSuccessPage.class
-TestApplication\AbstractComponents\DriverManager.class
-TestApplication\PageObjects\ViewOrdersHistoryPage.class
-TestApplication\PageObjects\BasePage.class
-TestApplication\PageObjects\CheckoutPage.class
