@@ -9,6 +9,8 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    public String homePageURL = "https://rahulshettyacademy.com/client/#/dashboard/dash";
+
     public void addToCartByProductName(String productName) {
         click(By.xpath(
                 "//div[@class='card-body']/h5[normalize-space()='" + productName + "']/following-sibling::button[2]"));

@@ -17,6 +17,7 @@ import TestApplication.PageObjects.ViewOrdersHistoryPage;
 public class ShoppingApplicationTest {
     WebDriver driver;
     LoginPage loginPage;
+    HomePage homePage;
 
     @BeforeMethod
     public void setUp() {
@@ -34,22 +35,24 @@ public class ShoppingApplicationTest {
 
     @Test(priority = 1, description = "Verify user can login with valid credentials")
     public void testUserLogin() {
-        HomePage homePage = loginPage.loginToApplication();
-        Assert.assertNotNull(homePage, "User login unsuccessful, home page did not load");
+        homePage = loginPage.loginToApplication();
+        homePage.waitForPageLoad("dashboard");
+        Assert.assertEquals(homePage.homePageURL, homePage.getPageURL(), "User Login failed");
         System.out.println("User login successful");
     }
 
     @Test(priority = 2, description = "Verify user can add product to cart by product name")
     public void testAddProductToCart() {
-        HomePage homePage = loginPage.loginToApplication();
+        homePage = loginPage.loginToApplication();
         String productName = "iphone 13 pro"; // Adjust based on actual product names
         homePage.addToCartByProductName(productName);
         System.out.println("Product added to cart: " + productName);
+        homePage.waitForSpinnerToDisappear();
     }
 
     @Test(priority = 3, description = "Verify user can filter products by price")
     public void testFilterByPrice() {
-        HomePage homePage = loginPage.loginToApplication();
+        homePage = loginPage.loginToApplication();
         homePage.setPriceFilter(10000, 50000);
         Assert.assertEquals(homePage.getPriceFilterValues()[0], "10000", "Min price filter value mismatch");
         Assert.assertEquals(homePage.getPriceFilterValues()[1], "50000", "Max price filter value mismatch");
@@ -58,7 +61,7 @@ public class ShoppingApplicationTest {
 
     @Test(priority = 4, description = "Verify user can complete checkout and place order")
     public void testCompleteCheckoutFlow() {
-        HomePage homePage = loginPage.loginToApplication();
+        homePage = loginPage.loginToApplication();
 
         String productName = "iphone 13 pro";
         homePage.addToCartByProductName(productName);
@@ -77,7 +80,7 @@ public class ShoppingApplicationTest {
 
     @Test(priority = 5, description = "Verify user can view order history")
     public void testViewOrderHistory() {
-        HomePage homePage = loginPage.loginToApplication();
+        homePage = loginPage.loginToApplication();
 
         String productName = "iphone 13 pro";
         homePage.addToCartByProductName(productName);
@@ -97,7 +100,7 @@ public class ShoppingApplicationTest {
 
     @Test(priority = 6, description = "Verify orders are displayed in order history")
     public void testOrderHistoryNotEmpty() {
-        HomePage homePage = loginPage.loginToApplication();
+        homePage = loginPage.loginToApplication();
 
         homePage.addToCartByProductName("iphone 13 pro");
         CartPage cartPage = homePage.CartMenu();
@@ -108,6 +111,7 @@ public class ShoppingApplicationTest {
         OrderSuccessPage orderSuccessPage = checkoutPage.placeOrder();
 
         ViewOrdersHistoryPage ordersPage = orderSuccessPage.viewOrdersHistory();
+        ordersPage.waitForPageLoad("myorders");
         java.util.List<String> orders = ordersPage.getOrderIds();
 
         Assert.assertNotNull(orders, "Orders list should not be null");

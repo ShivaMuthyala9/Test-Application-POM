@@ -29,6 +29,10 @@ public abstract class BasePage {
         driver.get(ConfigProperties.PAGE_URL);
     }
 
+    public String getPageURL() {
+        return driver.getCurrentUrl();
+    }
+
     // Wait helpers
     public WebElement waitForPresence(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -53,6 +57,11 @@ public abstract class BasePage {
 
     public void waitForAngularOverlays() {
         waitForInvisibility(By.cssSelector(".ta-backdrop"));
+        waitForSpinnerToDisappear();
+    }
+
+    public void waitForPageLoad(String endPoint) {
+        wait.until(ExpectedConditions.urlContains(endPoint));
         waitForSpinnerToDisappear();
     }
 
