@@ -4,25 +4,40 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestApplication.AbstractComponents.ConfigProperties;
 import TestApplication.AbstractComponents.DriverManager;
 
 public abstract class BasePage {
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Actions actions;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.actions = new Actions(driver);
+
     }
+
+    @FindBy(xpath = "//button[@routerlink=\"/dashboard/cart\"]")
+    WebElement cartMenu;
+
+    @FindBy(xpath = "//button[@routerlink=\"/dashboard/myorders\"]")
+    WebElement ordersHistoryMenu;
+
+    @FindBy(xpath = "//button[@routerlink=\"/dashboard/home\"]")
+    WebElement homeMenu;
+
+    @FindBy(xpath = "(//button[@class=\"btn btn-custom\"])[4]")
+    WebElement signOutButton;
 
     public void openApplication() {
         driver = DriverManager.initializeDriver();
@@ -38,8 +53,12 @@ public abstract class BasePage {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public WebElement waitForVisible(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public WebElement waitForVisible(WebElement locator) {
+        return wait.until(ExpectedConditions.visibilityOf(locator));
+    }
+
+    public WebElement waitForClickable(WebElement locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public WebElement waitForClickable(By locator) {
@@ -66,26 +85,31 @@ public abstract class BasePage {
     }
 
     // Basic actions
+    public void click(WebElement locator) {
+        waitForAngularOverlays();
+        waitForClickable(locator).click();
+    }
+
     public void click(By locator) {
         waitForAngularOverlays();
         waitForClickable(locator).click();
     }
 
-    public void type(By locator, String text) {
+    public void type(WebElement locator, String text) {
         WebElement el = waitForVisible(locator);
         el.clear();
         el.sendKeys(text);
     }
 
-    public String getText(By locator) {
+    public String getText(WebElement locator) {
         return waitForVisible(locator).getText();
     }
 
-    public String getAttribute(By locator, String attribute) {
-        return waitForPresence(locator).getAttribute(attribute);
+    public String getAttribute(WebElement locator, String attribute) {
+        return waitForVisible(locator).getAttribute(attribute);
     }
 
-    public void hover(By locator) {
+    public void hover(WebElement locator) {
         WebElement el = waitForVisible(locator);
         actions.moveToElement(el).perform();
     }
@@ -101,22 +125,23 @@ public abstract class BasePage {
 
     // Navigation methods
     public CartPage CartMenu() {
-        click(By.xpath("//button[@routerlink=\"/dashboard/cart\"]"));
+        click(cartMenu);
         return new CartPage(driver);
     }
 
     public ViewOrdersHistoryPage OrdersHistoryMenu() {
-        click(By.xpath("//button[@routerlink=\"/dashboard/myorders\"]"));
+        click(ordersHistoryMenu);
         return new ViewOrdersHistoryPage(driver);
     }
 
     public HomePage HomeMenu() {
-        click(By.xpath("//button[@routerlink=\"/dashboard/home\"]"));
+        click(homeMenu);
         return new HomePage(driver);
     }
 
-    public void signOutMenu() {
-        click(By.xpath("(//button[@class=\"btn btn-custom\"])[4]"));
+    public LoginPage signOutMenu() {
+        click(signOutButton);
+        return new LoginPage(driver);
     }
 
 }

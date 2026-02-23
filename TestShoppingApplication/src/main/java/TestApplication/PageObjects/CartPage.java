@@ -1,24 +1,31 @@
 package TestApplication.PageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends BasePage {
-    WebDriver Driver;
-
+    
     public CartPage(WebDriver driver) {
         super(driver);
-        this.Driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath = "//button[text()='Checkout']")
+    WebElement checkout;
+
+    @FindBy(xpath = "//button[text()='Continue Shopping']")
+    WebElement continueShopping;
+
     public CheckoutPage checkOut() {
-        click(By.xpath("//button[text()='Checkout']"));
-        return new CheckoutPage(Driver);
+        click(checkout);
+        return new CheckoutPage(driver);
     }
 
     public HomePage continueShopping() {
-        click(By.xpath("//button[text()='Continue Shopping']"));
-        return new HomePage(Driver);
+        click(continueShopping);
+        return new HomePage(driver);
     }
 
 }
