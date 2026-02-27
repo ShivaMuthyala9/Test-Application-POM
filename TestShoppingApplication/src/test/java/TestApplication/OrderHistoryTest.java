@@ -14,7 +14,7 @@ import TestApplication.PageObjects.LoginPage;
 import TestApplication.PageObjects.OrderSuccessPage;
 import TestApplication.PageObjects.ViewOrdersHistoryPage;
 
-public class ShoppingApplicationTest {
+public class OrderHistoryTest {
     WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
@@ -31,51 +31,6 @@ public class ShoppingApplicationTest {
         if (driver != null) {
             DriverManager.quitDriver(driver);
         }
-    }
-
-    @Test(description = "Verify user can login with valid credentials")
-    public void testUserLogin() {
-        homePage = loginPage.loginToApplication();
-        homePage.waitForPageLoad("dashboard");
-        Assert.assertEquals(homePage.homePageURL, homePage.getPageURL(), "User Login failed");
-        System.out.println("User login successful");
-    }
-
-    @Test(description = "Verify user can add product to cart by product name")
-    public void testAddProductToCart() {
-        homePage = loginPage.loginToApplication();
-        String productName = "iphone 13 pro"; // Adjust based on actual product names
-        homePage.addToCartByProductName(productName);
-        System.out.println("Product added to cart: " + productName);
-        homePage.waitForSpinnerToDisappear();
-    }
-
-    @Test(description = "Verify user can filter products by price")
-    public void testFilterByPrice() {
-        homePage = loginPage.loginToApplication();
-        homePage.setPriceFilter(10000, 50000);
-        Assert.assertEquals(homePage.getPriceFilterValues()[0], "10000", "Min price filter value mismatch");
-        Assert.assertEquals(homePage.getPriceFilterValues()[1], "50000", "Max price filter value mismatch");
-        System.out.println("Price filter applied successfully");
-    }
-
-    @Test(description = "Verify user can complete checkout and place order")
-    public void testCompleteCheckoutFlow() {
-        homePage = loginPage.loginToApplication();
-
-        String productName = "iphone 13 pro";
-        homePage.addToCartByProductName(productName);
-
-        CartPage cartPage = homePage.CartMenu();
-
-        CheckoutPage checkoutPage = cartPage.checkOut();
-        checkoutPage.fillCardDetails();
-        checkoutPage.fillShippingDetails();
-        checkoutPage.waitForAngularOverlays();
-
-        OrderSuccessPage orderSuccessPage = checkoutPage.placeOrder();
-        Assert.assertNotNull(orderSuccessPage, "Order success page should load after placing order");
-        System.out.println("Order placed successfully");
     }
 
     @Test(description = "Verify user can view order history")

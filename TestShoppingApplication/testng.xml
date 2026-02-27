@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Shopping Application Test Suite" parallel="false" verbose="2">
+<suite name="Shopping Application Test Suite" parallel="classes" thread-count="5" verbose="2">
     <test name="Shopping Tests">
         <classes>
-            <class name="TestApplication.ShoppingApplicationTest">
-                <methods>
-                    <include name="testUserLogin" />
-                    <include name="testAddProductToCart" />
-                    <include name="testFilterByPrice" />
-                    <include name="testCompleteCheckoutFlow" />
-                    <include name="testViewOrderHistory" />
-                    <include name="testOrderHistoryNotEmpty" />
-                </methods>
-            </class>
+            <class name="TestApplication.LoginTest" />
+            <class name="TestApplication.ProductTest" />
+            <class name="TestApplication.CheckoutTest" />
+            <class name="TestApplication.OrderHistoryTest" />
         </classes>
     </test>
 </suite>
