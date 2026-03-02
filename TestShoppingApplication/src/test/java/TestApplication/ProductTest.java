@@ -1,31 +1,18 @@
 package TestApplication;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import TestApplication.AbstractComponents.DriverManager;
 import TestApplication.PageObjects.HomePage;
 import TestApplication.PageObjects.LoginPage;
 
-public class ProductTest {
-    WebDriver driver;
+public class ProductTest extends BaseTest {
     LoginPage loginPage;
     HomePage homePage;
 
-    @BeforeMethod
-    public void setUp() {
-        driver = DriverManager.initializeDriver();
+    @BeforeMethod(alwaysRun = true)
+    public void prepare() {
         loginPage = new LoginPage(driver);
-        driver.get("https://rahulshettyacademy.com/client/#/auth/login");
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            DriverManager.quitDriver(driver);
-        }
     }
 
     @Test(description = "Verify user can add product to cart by product name")

@@ -1,32 +1,20 @@
 package TestApplication;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import TestApplication.AbstractComponents.DriverManager;
 import TestApplication.PageObjects.HomePage;
 import TestApplication.PageObjects.LoginPage;
 
-public class LoginTest {
-    WebDriver driver;
+public class LoginTest extends BaseTest {
     LoginPage loginPage;
     HomePage homePage;
 
-    @BeforeMethod
-    public void setUp() {
-        driver = DriverManager.initializeDriver();
+    @BeforeMethod(alwaysRun = true)
+    public void prepare() {
+        // baseUrl and driver initialization handled in BaseTest
         loginPage = new LoginPage(driver);
-        driver.get("https://rahulshettyacademy.com/client/#/auth/login");
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            DriverManager.quitDriver(driver);
-        }
     }
 
     @Test(description = "Verify user can login with valid credentials")

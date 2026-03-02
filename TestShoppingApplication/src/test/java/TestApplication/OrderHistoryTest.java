@@ -1,12 +1,9 @@
 package TestApplication;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import TestApplication.AbstractComponents.DriverManager;
 import TestApplication.PageObjects.CartPage;
 import TestApplication.PageObjects.CheckoutPage;
 import TestApplication.PageObjects.HomePage;
@@ -14,23 +11,13 @@ import TestApplication.PageObjects.LoginPage;
 import TestApplication.PageObjects.OrderSuccessPage;
 import TestApplication.PageObjects.ViewOrdersHistoryPage;
 
-public class OrderHistoryTest {
-    WebDriver driver;
+public class OrderHistoryTest extends BaseTest {
     LoginPage loginPage;
     HomePage homePage;
 
-    @BeforeMethod
-    public void setUp() {
-        driver = DriverManager.initializeDriver();
+    @BeforeMethod(alwaysRun = true)
+    public void prepare() {
         loginPage = new LoginPage(driver);
-        driver.get("https://rahulshettyacademy.com/client/#/auth/login");
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null) {
-            DriverManager.quitDriver(driver);
-        }
     }
 
     @Test(description = "Verify user can view order history")

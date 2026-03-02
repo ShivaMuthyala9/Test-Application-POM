@@ -8,12 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestApplication.AbstractComponents.ConfigProperties;
-import TestApplication.AbstractComponents.DriverManager;
 
 public abstract class BasePage {
     protected WebDriver driver;
@@ -40,7 +38,6 @@ public abstract class BasePage {
     WebElement signOutButton;
 
     public void openApplication() {
-        driver = DriverManager.initializeDriver();
         driver.get(ConfigProperties.PAGE_URL);
     }
 
