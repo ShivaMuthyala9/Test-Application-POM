@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Shopping Application Test Suite" parallel="classes" thread-count="5" verbose="2">
+    <parameter name="baseUrl" value="https://rahulshettyacademy.com/client/#/auth/login"/>
     <test name="Shopping Tests">
         <classes>
             <!-- <methods>
@@ -10,6 +11,7 @@
             <class name="TestApplication.ProductTest" />
             <class name="TestApplication.CheckoutTest" />
             <class name="TestApplication.OrderHistoryTest" />
+            <class name="TestApplication.ShoppingApplicationTest" />
         </classes>
     </test>
 </suite>
