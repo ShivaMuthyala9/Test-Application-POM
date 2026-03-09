@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -70,13 +69,19 @@ public abstract class BasePage {
     }
 
     public void waitForSpinnerToDisappear() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                By.cssSelector(".ngx-spinner-overlay")));
+
+        List<WebElement> spinners = driver.findElements(By.cssSelector(".ngx-spinner-overlay"));
+
+        if (!spinners.isEmpty()) {
+            wait.until(ExpectedConditions.invisibilityOfAllElements(spinners));
+        }
+
     }
 
     public void waitForAngularOverlays() {
-        waitForInvisibility(By.cssSelector(".ta-backdrop"));
+
         waitForSpinnerToDisappear();
+
     }
 
     public void waitForPageLoad(String endPoint) {
@@ -87,7 +92,8 @@ public abstract class BasePage {
     // Basic actions
     public void click(WebElement locator) {
         waitForAngularOverlays();
-        waitForClickable(locator).click();
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        element.click();
     }
 
     public void click(By locator) {

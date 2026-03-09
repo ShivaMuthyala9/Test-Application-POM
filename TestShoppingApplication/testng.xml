@@ -3,6 +3,9 @@
 <suite name="Shopping Application Test Suite" parallel="classes" thread-count="5" verbose="2">
     <test name="Shopping Tests">
         <classes>
+            <!-- <methods>
+                <include name="testOrderHistoryNotEmpty" />
+            </methods> -->
             <class name="TestApplication.LoginTest" />
             <class name="TestApplication.ProductTest" />
             <class name="TestApplication.CheckoutTest" />

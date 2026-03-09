@@ -98,8 +98,9 @@ public class ShoppingApplicationTest {
         System.out.println("Order history page accessed successfully");
     }
 
-    @Test(description = "Verify orders are displayed in order history")
-    public void testOrderHistoryNotEmpty() {
+    @Test(description = "Verify orders are displayed in order history", dependsOnMethods = {
+            "testCompleteCheckoutFlow" })
+    public void testOrderHistoryNotEmpty() throws InterruptedException {
         homePage = loginPage.loginToApplication();
 
         homePage.addToCartByProductName("iphone 13 pro");
@@ -111,9 +112,9 @@ public class ShoppingApplicationTest {
         OrderSuccessPage orderSuccessPage = checkoutPage.placeOrder();
 
         ViewOrdersHistoryPage ordersPage = orderSuccessPage.viewOrdersHistory();
+        // Thread.sleep(10000);
         ordersPage.waitForPageLoad("myorders");
         java.util.List<String> orders = ordersPage.getOrderIds();
-
         Assert.assertNotNull(orders, "Orders list should not be null");
         Assert.assertTrue(!orders.isEmpty(), "At least one order should be present");
         System.out.println("Order history contains " + orders.size() + " order(s)");
