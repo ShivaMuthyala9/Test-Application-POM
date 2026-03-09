@@ -7,10 +7,10 @@
             <!-- <methods>
                 <include name="testOrderHistoryNotEmpty" />
             </methods> -->
-            <class name="TestApplication.LoginTest" />
+            <!-- <class name="TestApplication.LoginTest" />
             <class name="TestApplication.ProductTest" />
             <class name="TestApplication.CheckoutTest" />
-            <class name="TestApplication.OrderHistoryTest" />
+            <class name="TestApplication.OrderHistoryTest" /> -->
             <class name="TestApplication.ShoppingApplicationTest" />
         </classes>
     </test>

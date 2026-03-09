@@ -12,8 +12,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestApplication.AbstractComponents.ConfigProperties;
+import TestApplication.AbstractComponents.DriverManager;
 
 public abstract class BasePage {
+
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;
@@ -22,7 +24,6 @@ public abstract class BasePage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.actions = new Actions(driver);
-
     }
 
     @FindBy(xpath = "//button[@routerlink=\"/dashboard/cart\"]")
@@ -38,6 +39,7 @@ public abstract class BasePage {
     WebElement signOutButton;
 
     public void openApplication() {
+        driver = DriverManager.initializeDriver();
         driver.get(ConfigProperties.PAGE_URL);
     }
 
@@ -45,7 +47,7 @@ public abstract class BasePage {
         return driver.getCurrentUrl();
     }
 
-    // Wait helpers
+    // Wait Helpers
     public WebElement waitForPresence(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
@@ -55,10 +57,6 @@ public abstract class BasePage {
     }
 
     public WebElement waitForClickable(WebElement locator) {
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-    public WebElement waitForClickable(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -73,13 +71,10 @@ public abstract class BasePage {
         if (!spinners.isEmpty()) {
             wait.until(ExpectedConditions.invisibilityOfAllElements(spinners));
         }
-
     }
 
     public void waitForAngularOverlays() {
-
         waitForSpinnerToDisappear();
-
     }
 
     public void waitForPageLoad(String endPoint) {
@@ -87,16 +82,19 @@ public abstract class BasePage {
         waitForSpinnerToDisappear();
     }
 
-    // Basic actions
+    // Basic Actions
     public void click(WebElement locator) {
+
         waitForAngularOverlays();
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         element.click();
     }
 
     public void click(By locator) {
+
         waitForAngularOverlays();
-        waitForClickable(locator).click();
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        element.click();
     }
 
     public void type(WebElement locator, String text) {
@@ -122,12 +120,7 @@ public abstract class BasePage {
         return driver.findElements(locator);
     }
 
-    // Allow adjusting the explicit wait timeout
-    public void setWaitTimeout(long seconds) {
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-    }
-
-    // Navigation methods
+    // Navigation
     public CartPage CartMenu() {
         click(cartMenu);
         return new CartPage(driver);
@@ -147,5 +140,4 @@ public abstract class BasePage {
         click(signOutButton);
         return new LoginPage(driver);
     }
-
 }

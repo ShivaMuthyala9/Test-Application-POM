@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends BasePage {
-    
+
     public CartPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -19,13 +19,14 @@ public class CartPage extends BasePage {
     WebElement continueShopping;
 
     public CheckoutPage checkOut() {
+
         click(checkout);
         return new CheckoutPage(driver);
     }
 
     public HomePage continueShopping() {
+
         click(continueShopping);
         return new HomePage(driver);
     }
-
 }

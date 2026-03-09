@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class OrderSuccessPage extends BasePage {
+
     public OrderSuccessPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -15,6 +16,7 @@ public class OrderSuccessPage extends BasePage {
     WebElement ordersHistoryLink;
 
     public ViewOrdersHistoryPage viewOrdersHistory() {
+
         click(ordersHistoryLink);
         return new ViewOrdersHistoryPage(driver);
     }
